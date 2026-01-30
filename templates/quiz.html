@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MedPrep Pro</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Confetti Library for Celebration -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+
+    <style>
+        :root {
+            --primary: #6C63FF;
+            --secondary: #2A2D3E;
+            --success: #00C851;
+            --error: #ff4444;
+            --glass: rgba(255, 255, 255, 0.95);
+            --bg-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--bg-gradient);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--secondary);
+            overflow: hidden;
+        }
+
+        /* Glassmorphism Card */
+        .quiz-container {
+            background: var(--glass);
+            width: 100%;
+            max-width: 480px;
+            padding: 2rem;
+            border-radius: 24px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            position: relative;
+            margin: 20px;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+
+        /* Progress Bar */
+        .progress-container {
+            width: 100%;
+            background: #e0e0e0;
+            height: 6px;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            overflow: hidden;
+        }
+        .progress-bar {
+            height: 100%;
+            background: var(--primary);
+            width: 0%;
+            transition: width 0.4s ease-in-out;
+            border-radius: 10px;
+        }
+
+        /* Header Stats */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        /* Question Typography */
+        h2 {
+            font-size: 1.4rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.4;
+            color: #333;
+            animation: fadeIn 0.5s ease;
+        }
+
+        /* Options Grid */
+        .options-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .option-btn {
+            background: #f8f9fa;
+            border: 2px solid transparent;
+            padding: 15px 20px;
+            border-radius: 16px;
+            font-size: 1rem;
+            font-family: inherit;
+            color: #444;
+            cursor: pointer;
+            text-align: left;
+            transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .option-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-color: #d1d1d1;
+        }
+
+        .option-btn:active {
+            transform: scale(0.98);
+        }
+
+        /* State Colors */
+        .option-btn.correct {
+            background: #d4edda;
+            border-color: var(--success);
+            color: #0c5222;
+        }
+        .option-btn.wrong {
+            background: #fadbd8;
+            border-color: var(--error);
+            color: #781d1d;
+        }
+
+        /* Footer / Explanation */
+        .explanation-box {
+            margin-top: 1.5rem;
+            padding: 15px;
+            background: #f1f3f5;
+            border-left: 4px solid var(--primary);
+            border-radius: 8px;
+            font-size: 0.9rem;
+            color: #555;
+            display: none;
+            animation: slideUp 0.3s ease;
+        }
+
+        .next-btn {
+            margin-top: 1.5rem;
+            width: 100%;
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 16px;
+            border-radius: 16px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: none;
+            transition: 0.3s;
+            box-shadow: 0 4px 15px rgba(108, 99, 255, 0.3);
+        }
+        .next-btn:hover { background: #5a52d5; }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Result Screen */
+        .result-screen {
+            text-align: center;
+            display: none;
+        }
+        .score-circle {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin: 0 auto 20px;
+            box-shadow: 0 10px 20px rgba(108, 99, 255, 0.4);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="quiz-container">
+        <!-- Header -->
+        <div class="header">
+            <span><i class="fas fa-brain"></i> Psych Prep</span>
+            <span id="question-count">Q 1/5</span>
+        </div>
+
+        <!-- Progress Bar -->
+        <div class="progress-container">
+            <div class="progress-bar" id="progress"></div>
+        </div>
+
+        <!-- Quiz Content -->
+        <div id="quiz-content">
+            <h2 id="q-text">Loading Question...</h2>
+            <div class="options-grid" id="options"></div>
+            
+            <div class="explanation-box" id="explanation">
+                <i class="fas fa-info-circle"></i> <span id="explain-text"></span>
+            </div>
+
+            <button class="next-btn" id="next-btn" onclick="nextQuestion()">
+                Next Question <i class="fas fa-arrow-right"></i>
+            </button>
+        </div>
+
+        <!-- Result Screen -->
+        <div class="result-screen" id="result-content">
+            <div class="score-circle" id="final-score">0</div>
+            <h2>Exam Completed!</h2>
+            <p style="color:#666; margin-bottom:20px;">You are ready for Monday!</p>
+            <button class="next-btn" style="display:block" onclick="location.reload()">Try Again</button>
+        </div>
+    </div>
+
+    <script>
+        const questions = {{ questions | tojson }};
+        let currentQ = 0;
+        let score = 0;
+
+        function updateProgress() {
+            const percent = ((currentQ) / questions.length) * 100;
+            document.getElementById('progress').style.width = percent + "%";
+            document.getElementById('question-count').innerText = `Q ${currentQ + 1}/${questions.length}`;
+        }
+
+        function loadQ() {
+            if (questions.length === 0) return;
+            
+            updateProgress();
+            
+            // UI Reset
+            document.getElementById('explanation').style.display = 'none';
+            document.getElementById('next-btn').style.display = 'none';
+            
+            // Load Text
+            const q = questions[currentQ];
+            const qText = document.getElementById('q-text');
+            qText.innerText = q.q;
+            
+            // Re-trigger animation
+            qText.style.animation = 'none';
+            qText.offsetHeight; /* trigger reflow */
+            qText.style.animation = 'fadeIn 0.5s ease';
+
+            const optsDiv = document.getElementById('options');
+            optsDiv.innerHTML = '';
+
+            q.options.forEach((opt, idx) => {
+                const btn = document.createElement('button');
+                btn.className = 'option-btn';
+                // Add letter A, B, C, D styling
+                const letter = String.fromCharCode(65 + idx);
+                btn.innerHTML = `<span><b>${letter}.</b> ${opt}</span>`;
+                
+                btn.onclick = () => check(idx, btn);
+                optsDiv.appendChild(btn);
+            });
+        }
+
+        function check(selected, btn) {
+            const correct = questions[currentQ].answer;
+            const buttons = document.querySelectorAll('.option-btn');
+            
+            // Disable buttons
+            buttons.forEach(b => {
+                b.disabled = true;
+                b.style.cursor = 'default';
+            });
+
+            const correctIcon = '<i class="fas fa-check-circle"></i>';
+            const wrongIcon = '<i class="fas fa-times-circle"></i>';
+
+            if (selected === correct) {
+                btn.classList.add('correct');
+                btn.innerHTML += correctIcon;
+                score++;
+                // Small confetti for correct answer
+                confetti({ particleCount: 50, spread: 60, origin: { y: 0.7 } });
+            } else {
+                btn.classList.add('wrong');
+                btn.innerHTML += wrongIcon;
+                // Highlight correct one
+                const correctBtn = buttons[correct];
+                correctBtn.classList.add('correct');
+                correctBtn.innerHTML += correctIcon;
+            }
+
+            // Show Explain
+            document.getElementById('explain-text').innerText = questions[currentQ].explain;
+            document.getElementById('explanation').style.display = 'block';
+            document.getElementById('next-btn').style.display = 'block';
+            
+            // Update progress bar to full for this step
+            const percent = ((currentQ + 1) / questions.length) * 100;
+            document.getElementById('progress').style.width = percent + "%";
+        }
+
+        function nextQuestion() {
+            currentQ++;
+            if (currentQ < questions.length) {
+                loadQ();
+            } else {
+                showResult();
+            }
+        }
+
+        function showResult() {
+            document.getElementById('quiz-content').style.display = 'none';
+            document.getElementById('result-content').style.display = 'block';
+            document.getElementById('final-score').innerText = `${score}/${questions.length}`;
+            document.getElementById('progress').style.width = "100%";
+            document.getElementById('question-count').innerText = "Finished";
+
+            // Big Celebration Confetti
+            var duration = 3000;
+            var end = Date.now() + duration;
+
+            (function frame() {
+                confetti({
+                    particleCount: 5,
+                    angle: 60,
+                    spread: 55,
+                    origin: { x: 0 }
+                });
+                confetti({
+                    particleCount: 5,
+                    angle: 120,
+                    spread: 55,
+                    origin: { x: 1 }
+                });
+
+                if (Date.now() < end) {
+                    requestAnimationFrame(frame);
+                }
+            }());
+        }
+
+        loadQ();
+    </script>
+</body>
+</html>
