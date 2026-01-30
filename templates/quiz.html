@@ -3,113 +3,200 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Samiah's Psych Drill 🩺</title>
+    <title>Royal Psych Drill | Samiah 🌸</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Cairo:wght@600;700&family=Pacifico&display=swap" rel="stylesheet">
+    <!-- Fonts: Playfair for Royal, Quicksand for Cute -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Quicksand:wght@400;600;700&family=Cairo:wght@600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 
     <style>
+        :root {
+            --dark-red: #991b1b;
+            --dark-pink: #be185d;
+            --light-pink: #fff1f2;
+            --royal-gold: #d4af37;
+        }
+
         body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background: #fdf2f8; /* Soft Medical Pink */
+            font-family: 'Quicksand', sans-serif;
+            background: var(--light-pink);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
+            overflow-x: hidden;
         }
         :lang(ar) { font-family: 'Cairo', sans-serif; }
 
+        /* Royal Text Style */
+        .royal-text {
+            font-family: 'Playfair Display', serif;
+            color: var(--dark-pink);
+        }
+
+        /* 3D Floating Bubbles */
+        .bubble {
+            position: absolute;
+            background: rgba(190, 24, 93, 0.1);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+            animation: floatBubbles 15s infinite linear;
+        }
+
+        @keyframes floatBubbles {
+            0% { transform: translateY(100vh) scale(0.5); opacity: 0; }
+            50% { opacity: 0.5; }
+            100% { transform: translateY(-10vh) scale(1.2); opacity: 0; }
+        }
+
+        /* Samiah Pop Animation (Slow & Elegant) */
         .samiah-pop {
             position: fixed;
-            top: 30%; left: 50%;
+            top: 35%; left: 50%;
             transform: translate(-50%, -50%);
-            font-family: 'Pacifico', cursive;
-            font-size: 3rem;
-            color: #be185d;
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 3.5rem;
+            color: var(--dark-red);
             z-index: 100;
             display: none;
             pointer-events: none;
-            text-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            text-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+            animation-duration: 2.5s !important; /* Slow speed */
         }
 
-        .option-card {
-            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-            border: 1.5px solid #fce7f3;
+        /* 3D Responsive Card */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border-radius: 2.5rem;
+            border: 1px solid rgba(153, 27, 27, 0.1);
+            box-shadow: 0 15px 35px rgba(153, 27, 27, 0.1), inset 0 -5px 0 rgba(153, 27, 27, 0.05);
+        }
+
+        /* 3D Option Buttons */
+        .option-btn {
             background: white;
+            border: 2px solid #fee2e2;
+            border-radius: 1.25rem;
+            padding: 1rem;
+            font-weight: 700;
+            color: #4b5563;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 4px 0 #fee2e2;
         }
-        .option-card:active { transform: scale(0.97); }
-        .card-correct { background: #dcfce7 !important; border-color: #22c55e !important; color: #166534 !important; }
-        .card-wrong { background: #fee2e2 !important; border-color: #ef4444 !important; color: #991b1b !important; }
+        .option-btn:active { transform: translateY(4px); box-shadow: 0 0 0 #fee2e2; }
+        
+        .correct-ans { background: #dcfce7 !important; border-color: #22c55e !important; color: #166534 !important; box-shadow: 0 4px 0 #16a34a !important; }
+        .wrong-ans { background: #fee2e2 !important; border-color: #ef4444 !important; color: #991b1b !important; box-shadow: 0 4px 0 #dc2626 !important; }
 
-        /* Custom Scrollbar for small screens */
-        ::-webkit-scrollbar { width: 4px; }
-        ::-webkit-scrollbar-thumb { background: #fbcfe8; border-radius: 10px; }
+        /* Mascot Container */
+        .mascot-box {
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .celebration-gif {
+            height: 150px;
+            display: none;
+            animation-duration: 3s !important;
+        }
+
+        /* Progress Bar */
+        .royal-progress {
+            height: 8px;
+            background: #fecdd3;
+            border-radius: 99px;
+            overflow: hidden;
+            border: 1px solid rgba(153, 27, 27, 0.05);
+        }
+        .royal-progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--dark-red), var(--dark-pink));
+            transition: width 1s ease-in-out;
+        }
     </style>
 </head>
-<body class="p-4" dir="ltr">
+<body class="p-4 relative">
 
-    <!-- Samiah Text Blast -->
-    <div id="samiah-pop" class="samiah-pop animate__animated">Samiah! 🌸</div>
+    <!-- Floating Background Bubbles -->
+    <div class="bubble" style="width: 80px; height: 80px; left: 10%; animation-duration: 10s;"></div>
+    <div class="bubble" style="width: 40px; height: 40px; left: 80%; animation-duration: 14s; animation-delay: 2s;"></div>
+    <div class="bubble" style="width: 60px; height: 60px; left: 50%; animation-duration: 12s; animation-delay: 5s;"></div>
 
-    <div class="max-w-md mx-auto w-full flex flex-col flex-grow">
+    <!-- Celebration Elements -->
+    <div id="samiah-pop" class="samiah-pop animate__animated">Princess Samiah! 🌸</div>
+
+    <div class="max-w-md mx-auto w-full flex flex-col flex-grow z-10">
         
-        <!-- Header: Language & Reset -->
-        <div class="flex justify-between items-center mb-4">
-            <button onclick="resetQuiz()" class="text-[10px] font-bold text-gray-400 border border-gray-200 px-3 py-1 rounded-full hover:bg-white transition-all">
-                🔄 RESET DRILL
+        <!-- Header Section -->
+        <div class="flex justify-between items-center mb-6">
+            <button onclick="resetQuiz()" class="text-[11px] font-black text-red-800 tracking-widest bg-white/50 px-4 py-2 rounded-full border border-red-100 uppercase">
+                🔄 Reset Study
             </button>
-            <div class="flex bg-white/50 backdrop-blur rounded-full p-1 border border-pink-100 shadow-sm">
-                <button onclick="setLang('en')" id="btn-en" class="text-[10px] px-3 py-1 rounded-full font-bold transition-all">EN</button>
-                <button onclick="setLang('ar')" id="btn-ar" class="text-[10px] px-3 py-1 rounded-full font-bold transition-all">AR</button>
+            <div class="flex bg-red-800 p-1 rounded-full shadow-lg">
+                <button onclick="setLang('en')" id="btn-en" class="text-[11px] px-4 py-1.5 rounded-full font-bold transition-all">EN</button>
+                <button onclick="setLang('ar')" id="btn-ar" class="text-[11px] px-4 py-1.5 rounded-full font-bold transition-all">AR</button>
             </div>
         </div>
 
         <!-- Progress Card -->
-        <div class="bg-white rounded-2xl p-3 shadow-sm mb-4 border border-pink-50">
-            <div class="flex justify-between items-center mb-2">
-                <span class="text-[11px] font-extrabold text-pink-500 uppercase tracking-tighter" id="q-status">Question 1/15</span>
-                <span class="text-[11px] font-bold text-indigo-400 tracking-tighter">Psychiatry 🧠 💊</span>
+        <div class="glass-card p-5 mb-6">
+            <div class="flex justify-between items-center mb-3">
+                <span class="royal-text text-sm italic font-bold" id="q-status">Drill 1 / 15</span>
+                <span class="text-xs font-bold text-red-800 flex items-center gap-1 uppercase tracking-tighter">
+                    Psychiatry 🧠 💊
+                </span>
             </div>
-            <div class="w-full bg-gray-100 h-1.5 rounded-full overflow-hidden">
-                <div id="progress-bar" class="h-full bg-gradient-to-r from-pink-400 to-indigo-400 transition-all duration-1000" style="width: 0%"></div>
-            </div>
-        </div>
-
-        <!-- Mascot Container: Smaller & Auto-height -->
-        <div class="flex flex-col items-center justify-center mb-4">
-            <div class="w-28 h-28">
-                <lottie-player id="panda" src="https://assets10.lottiefiles.com/packages/lf20_9n6mre.json" background="transparent" speed="1" loop autoplay></lottie-player>
-            </div>
-            <p id="feedback-txt" class="text-[10px] font-bold text-gray-400 italic mt-1">Ready, Samiah? 🐼</p>
-        </div>
-
-        <!-- Quiz Area: Flexible height -->
-        <div id="quiz-ui" class="flex flex-col space-y-3">
-            <div class="bg-white rounded-3xl p-5 shadow-sm border-b-4 border-pink-100">
-                <h2 id="question-text" class="text-base md:text-lg font-bold text-gray-800 text-center leading-snug"></h2>
-            </div>
-
-            <div id="options-grid" class="flex flex-col space-y-2">
-                <!-- Options injected here -->
+            <div class="royal-progress">
+                <div id="progress-bar" class="royal-progress-fill" style="width: 0%"></div>
             </div>
         </div>
 
-        <!-- Result Screen: Neat Overlay -->
-        <div id="result-ui" class="hidden flex-grow flex flex-col items-center justify-center text-center animate__animated animate__fadeIn">
-            <div class="bg-white p-8 rounded-[3rem] shadow-xl border-4 border-pink-50 w-full">
-                <div class="text-4xl mb-4">🩺✨</div>
-                <h1 class="text-2xl font-black text-gray-800 mb-2" id="res-title">Brilliant!</h1>
-                <p class="text-gray-500 text-sm mb-6 leading-relaxed" id="res-msg">Samiah, you are a psychiatry expert!</p>
-                <div class="text-5xl font-black text-indigo-600 mb-8" id="final-score">0/0</div>
-                <button onclick="resetQuiz()" class="w-full bg-slate-900 text-white font-bold py-4 rounded-2xl shadow-lg">Restart Drill</button>
+        <!-- Mascot & GIF Area -->
+        <div class="mascot-box mb-6">
+            <!-- Normal Lottie (Invisible during GIF) -->
+            <div id="lottie-panda" class="w-24 h-24">
+                <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+                <lottie-player src="https://assets10.lottiefiles.com/packages/lf20_9n6mre.json" background="transparent" speed="1" loop autoplay></lottie-player>
+            </div>
+            <!-- Your Dropbox GIF -->
+            <img id="panda-gif" src="https://www.dropbox.com/scl/fi/qfl9sswcrj2892ufguf1z/giphy_transparent.gif?rlkey=l3q7czi38yafe2rlx3l2qfqf0&st=anqzn18m&dl=1" 
+                 class="celebration-gif animate__animated animate__fadeIn" alt="Dancing Panda">
+        </div>
+
+        <!-- Question Area -->
+        <div id="quiz-ui" class="flex flex-col flex-grow space-y-4">
+            <div class="glass-card p-6 border-l-8 border-red-800">
+                <h2 id="question-text" class="text-lg md:text-xl font-bold text-gray-800 text-center leading-relaxed italic"></h2>
+            </div>
+
+            <div id="options-grid" class="flex flex-col space-y-3">
+                <!-- Options Shuffled Here -->
             </div>
         </div>
 
-        <!-- Footer -->
-        <div class="mt-auto py-4 text-center">
-            <p class="text-[10px] font-black text-gray-300 uppercase tracking-widest">Samiah's Score: <span id="current-score" class="text-pink-500">0</span></p>
+        <!-- Result Screen (Overlay Style) -->
+        <div id="result-ui" class="hidden flex-grow flex flex-col items-center justify-center animate__animated animate__fadeIn">
+            <div class="glass-card p-10 text-center border-t-8 border-red-800 w-full">
+                <h2 class="royal-text text-3xl mb-2">Excellent!</h2>
+                <p class="text-gray-500 font-bold mb-8 italic">Samiah, your results are royal! ✨</p>
+                <div class="text-6xl font-black text-red-800 mb-10" id="final-score">0/0</div>
+                <button onclick="resetQuiz()" class="w-full py-5 bg-red-800 text-white font-bold rounded-2xl shadow-xl hover:bg-red-900 transition-all uppercase tracking-widest text-sm">
+                    Begin New Session
+                </button>
+            </div>
+        </div>
+
+        <!-- Royal Footer -->
+        <div class="mt-auto py-6 text-center border-t border-red-100">
+            <p class="text-[11px] font-bold text-red-800 tracking-[0.3em] uppercase">
+                Success is yours, Samiah ✨ Score: <span id="current-score" class="text-red-500">0</span>
+            </p>
         </div>
     </div>
 
@@ -121,8 +208,8 @@
         let isLocked = false;
 
         const i18n = {
-            en: { status: "Question", wait: "Dr. Panda is waiting... 🐼", correct: "Bravo, Samiah! 🌸", wrong: "Look closely! ✨", resT: "Success!", resM: "Samiah, you're ready for Monday!", samiah: "Samiah! 🌸" },
-            ar: { status: "سؤال", wait: "دكتور باندا ينتظر... 🐼", correct: "أحسنتِ يا سامية! 🌸", wrong: "ركزي أكثر! ✨", resT: "رائع!", resM: "سامية، أنتِ جاهزة للامتحان!", samiah: "سامية! 🌸" }
+            en: { status: "Study Step", correct: "Divine, Samiah! 👑", wrong: "Focus, My Lady ✨", resT: "Royal Success!", resM: "Samiah, you have conquered the syllabus!", samiah: "Samiah! 🌸" },
+            ar: { status: "خطوة الدراسة", correct: "أحسنتِ يا سامية! 👑", wrong: "ركزي أكثر ✨", resT: "رائع!", resM: "سامية، لقد أتقنتِ المنهج بنجاح!", samiah: "سامية! 🌸" }
         };
 
         function setLang(l) {
@@ -134,8 +221,8 @@
         }
 
         function updateLangButtons() {
-            document.getElementById('btn-en').className = lang === 'en' ? 'bg-indigo-500 text-white px-3 py-1 rounded-full' : 'text-gray-400 px-3 py-1';
-            document.getElementById('btn-ar').className = lang === 'ar' ? 'bg-indigo-500 text-white px-3 py-1 rounded-full' : 'text-gray-400 px-3 py-1';
+            document.getElementById('btn-en').className = lang === 'en' ? 'bg-white text-red-800 px-4 py-1 rounded-full' : 'text-white px-4 py-1';
+            document.getElementById('btn-ar').className = lang === 'ar' ? 'bg-white text-red-800 px-4 py-1 rounded-full' : 'text-white px-4 py-1';
         }
 
         function loadQuestion() {
@@ -145,19 +232,19 @@
             }
 
             isLocked = false;
+            // Hide GIF, Show Lottie
+            document.getElementById('lottie-panda').style.display = 'block';
+            document.getElementById('panda-gif').style.display = 'none';
+
             const qData = rawQuestions[currentIdx];
             const currentQ = qData[lang];
             
-            // UI Reset
-            document.getElementById('panda').load("https://assets10.lottiefiles.com/packages/lf20_9n6mre.json");
-            document.getElementById('feedback-txt').innerText = i18n[lang].wait;
-            document.getElementById('feedback-txt').className = "text-[10px] font-bold text-gray-400 italic mt-1";
-            document.getElementById('q-status').innerText = `${i18n[lang].status} ${currentIdx + 1}/${rawQuestions.length}`;
+            document.getElementById('q-status').innerText = `${i18n[lang].status} ${currentIdx + 1} / ${rawQuestions.length}`;
             document.getElementById('progress-bar').style.width = `${((currentIdx) / rawQuestions.length) * 100}%`;
             document.getElementById('current-score').innerText = score;
             document.getElementById('question-text').innerText = currentQ.q;
 
-            // SHUFFLE LOGIC
+            // Robust Shuffling
             const originalOptions = [...currentQ.options];
             const correctText = currentQ.options[qData.answer];
             const shuffledOptions = originalOptions.sort(() => Math.random() - 0.5);
@@ -168,8 +255,9 @@
             
             shuffledOptions.forEach((opt, idx) => {
                 const btn = document.createElement('button');
-                btn.className = "option-card p-3.5 rounded-2xl text-[13px] font-bold text-gray-600 shadow-sm flex items-center gap-3";
-                btn.innerHTML = `<span class="bg-gray-50 w-6 h-6 rounded-full flex items-center justify-center text-[10px] text-gray-400 border border-gray-100">${idx+1}</span> <span class="flex-1">${opt}</span>`;
+                btn.className = "option-btn text-sm text-left flex items-center gap-4";
+                if(lang === 'ar') btn.classList.add('text-right');
+                btn.innerHTML = `<span class="bg-red-50 text-red-800 px-3 py-1 rounded-lg text-[10px] font-black">${idx+1}</span> <span class="flex-1">${opt}</span>`;
                 btn.onclick = () => checkAnswer(idx, newCorrectIdx, btn);
                 container.appendChild(btn);
             });
@@ -179,50 +267,45 @@
             if (isLocked) return;
             isLocked = true;
 
-            const panda = document.getElementById('panda');
-            const feedback = document.getElementById('feedback-txt');
-
             if (selected === correct) {
                 score++;
-                element.classList.add('card-correct');
-                feedback.innerText = i18n[lang].correct;
-                feedback.className = "text-[10px] font-bold text-green-500 mt-1 animate__animated animate__pulse";
-                panda.load("https://assets1.lottiefiles.com/packages/lf20_6r9v9y.json"); // Dance
+                element.classList.add('correct-ans');
                 triggerCelebration();
             } else {
-                element.classList.add('card-wrong');
-                document.querySelectorAll('.option-card')[correct].classList.add('card-correct');
-                feedback.innerText = i18n[lang].wrong;
-                feedback.className = "text-[10px] font-bold text-red-400 mt-1";
-                panda.load("https://assets10.lottiefiles.com/packages/lf20_qpwb7mpx.json"); // Sad
+                element.classList.add('wrong-ans');
+                document.querySelectorAll('.option-btn')[correct].classList.add('correct-ans');
             }
 
-            // AUTO NEXT: 2 Seconds
+            // AUTO NEXT: 3.5 Seconds (Slow & Royal)
             setTimeout(() => {
                 currentIdx++;
                 loadQuestion();
-            }, 2000);
+            }, 3500);
         }
 
         function triggerCelebration() {
-            // Flower Blast
+            // Show GIF, Hide Lottie
+            document.getElementById('lottie-panda').style.display = 'none';
+            document.getElementById('panda-gif').style.display = 'block';
+
+            // Flower Confetti
             confetti({
                 particleCount: 150,
-                spread: 80,
+                spread: 70,
                 origin: { y: 0.6 },
-                colors: ['#f472b6', '#ec4899', '#ffffff', '#818cf8'],
-                shapes: ['circle', 'square']
+                colors: ['#991b1b', '#be185d', '#d4af37', '#ffffff']
             });
 
-            // Samiah Name Blast
+            // Royal Samiah Pop (Slow)
             const pop = document.getElementById('samiah-pop');
             pop.innerText = i18n[lang].samiah;
             pop.style.display = 'block';
-            pop.className = 'samiah-pop animate__animated animate__backInDown';
+            pop.className = 'samiah-pop animate__animated animate__zoomIn';
+            
             setTimeout(() => {
                 pop.className = 'samiah-pop animate__animated animate__fadeOutUp';
-                setTimeout(() => { pop.style.display = 'none'; }, 1000);
-            }, 1200);
+                setTimeout(() => { pop.style.display = 'none'; }, 1500);
+            }, 2000);
         }
 
         function showResults() {
@@ -230,10 +313,7 @@
             document.getElementById('result-ui').classList.remove('hidden');
             document.getElementById('final-score').innerText = `${score}/${rawQuestions.length}`;
             document.getElementById('progress-bar').style.width = '100%';
-            document.getElementById('res-title').innerText = i18n[lang].resT;
-            document.getElementById('res-msg').innerText = i18n[lang].resM;
-            document.getElementById('panda').load("https://assets1.lottiefiles.com/packages/lf20_7zt8sh.json");
-            confetti({ particleCount: 300, spread: 100 });
+            confetti({ particleCount: 400, spread: 120 });
         }
 
         function resetQuiz() {
