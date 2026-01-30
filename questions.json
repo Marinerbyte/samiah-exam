@@ -1,0 +1,197 @@
+[
+  {
+    "en": {
+      "q": "A 22-year-old student believes that his neighbor is a spy using a laser to read his thoughts. He has no mood symptoms. Diagnosis?",
+      "options": ["Bipolar Disorder", "Schizophrenia", "Brief Psychotic Disorder", "Delusional Disorder"],
+      "explain": "Correct! These are 'delusions of control/persecution' with no mood symptoms, typical of Schizophrenia."
+    },
+    "ar": {
+      "q": "يعتقد طالب يبلغ من العمر 22 عامًا أن جاره جاسوس يستخدم الليزر لقراءة أفكاره. لا يعاني من أعراض مزاجية. التشخيص؟",
+      "options": ["الاضطراب ثنائي القطب", "فصام الشخصية", "اضطراب ذهاني وجيز", "الاضطراب الضلالي"],
+      "explain": "صحيح! هذه 'ضلالات السيطرة/الاضطهاد' دون أعراض مزاجية، وهي نموذجية لمرض الفصام."
+    },
+    "answer": 1
+  },
+  {
+    "en": {
+      "q": "A patient on Antipsychotics develops high fever, 'lead-pipe' muscle rigidity, and tachycardia. What is the diagnosis?",
+      "options": ["Serotonin Syndrome", "Neuroleptic Malignant Syndrome (NMS)", "Acute Dystonia", "Akathisia"],
+      "explain": "NMS is a life-threatening emergency caused by antipsychotics. Key sign: Lead-pipe rigidity."
+    },
+    "ar": {
+      "q": "مريض يتناول مضادات الذهان يعاني من حمى عالية، تصلب عضلي شديد (تصلب الأنبوب الرصاصي)، وتسرع في ضربات القلب. ما هو التشخيص؟",
+      "options": ["متلازمة السيروتونين", "المتلازمة الخبيثة للذهان (NMS)", "خلل التوتر العضلي الحاد", "التململ الحركي"],
+      "explain": "NMS هي حالة طارئة تهدد الحياة ناتجة عن مضادات الذهان. العلامة الرئيسية: تصلب الأنبوب الرصاصي."
+    },
+    "answer": 1
+  },
+  {
+    "en": {
+      "q": "Which medication is first-line for a patient with severe Mania?",
+      "options": ["Sertraline", "Lithium", "Diazepam", "Fluoxetine"],
+      "explain": "Lithium or Valproate are the gold standard for stabilizing manic episodes in Bipolar Disorder."
+    },
+    "ar": {
+      "q": "ما هو الدواء الذي يعتبر الخيار الأول لمريض يعاني من هوس (Mania) شديد؟",
+      "options": ["سيرترالين", "الليثيوم", "ديازيبام", "فلوكسيتين"],
+      "explain": "الليثيوم أو الفالبروات هما المعيار الذهبي لتثبيت نوبات الهوس في الاضطراب ثنائي القطب."
+    },
+    "answer": 1
+  },
+  {
+    "en": {
+      "q": "A 19-year-old girl has a BMI of 15.5, fears weight gain, and stopped menstruating. Diagnosis?",
+      "options": ["Bulimia Nervosa", "Anorexia Nervosa", "Binge Eating Disorder", "Depression"],
+      "explain": "Anorexia Nervosa is defined by low BMI (<18.5) and an intense fear of weight gain."
+    },
+    "ar": {
+      "q": "فتاة تبلغ من العمر 19 عامًا، مؤشر كتلة جسمها 15.5، تخشى زيادة الوزن وتوقفت الدورة الشهرية لديها. التشخيص؟",
+      "options": ["النهام العصبي", "فقدان الشهية العصبي", "اضطراب نهم الطعام", "الاكتئاب"],
+      "explain": "يتميز فقدان الشهية العصبي بانخفاض مؤشر كتلة الجسم (<18.5) وخوف شديد من زيادة الوزن."
+    },
+    "answer": 1
+  },
+  {
+    "en": {
+      "q": "A patient feels 'inner restlessness' and cannot sit still after starting Haloperidol. This is:",
+      "options": ["Akathisia", "Tardive Dyskinesia", "Parkinsonism", "Dystonia"],
+      "explain": "Akathisia is an EPS (Extrapyramidal symptom) described as a feeling of muscular restlessness."
+    },
+    "ar": {
+      "q": "يشعر المريض بـ 'تململ داخلي' ولا يستطيع الجلوس ساكناً بعد بدء تناول الهالوبيريدول. هذا هو:",
+      "options": ["التململ الحركي (Akathisia)", "خلل الحركة المتأخر", "الباركنسونية", "خلل التوتر العضلي"],
+      "explain": "التململ الحركي هو عرض خارج السبيل الهرمي (EPS) يوصف بالشعور بعدم الراحة العضلية."
+    },
+    "answer": 0
+  },
+  {
+    "en": {
+      "q": "What side effect of Clozapine requires weekly blood monitoring?",
+      "options": ["Weight gain", "Agranulocytosis", "Seizures", "Sedation"],
+      "explain": "Clozapine can cause a life-threatening drop in white blood cells (Agranulocytosis)."
+    },
+    "ar": {
+      "q": "ما هو العرض الجانبي للكلوزابين الذي يتطلب مراقبة أسبوعية للدم؟",
+      "options": ["زيادة الوزن", "ندرة المحببات (Agranulocytosis)", "النوبات", "التخدير"],
+      "explain": "يمكن أن يسبب الكلوزابين انخفاضًا يهدد الحياة في خلايا الدم البيضاء (ندرة المحببات)."
+    },
+    "answer": 1
+  },
+  {
+    "en": {
+      "q": "A patient experiences recurring sudden attacks of terror, palpitations, and fear of dying. Diagnosis?",
+      "options": ["Generalized Anxiety Disorder", "Panic Disorder", "Social Phobia", "OCD"],
+      "explain": "Panic Disorder is characterized by recurrent, unexpected panic attacks."
+    },
+    "ar": {
+      "q": "يعاني مريض من نوبات رعب مفاجئة متكررة، وخفقان، وخوف من الموت. التشخيص؟",
+      "options": ["اضطراب القلق العام", "اضطراب الهلع", "الرهاب الاجتماعي", "الوسواس القهري"],
+      "explain": "يتميز اضطراب الهلع بنوبات هلع متكررة وغير متوقعة."
+    },
+    "answer": 1
+  },
+  {
+    "en": {
+      "q": "A war veteran reports nightmares, flashbacks, and avoidance of loud noises. Diagnosis?",
+      "options": ["Schizophrenia", "PTSD", "Adjustment Disorder", "Panic Attack"],
+      "explain": "Post-Traumatic Stress Disorder (PTSD) involves re-experiencing a traumatic event."
+    },
+    "ar": {
+      "q": "يبلغ أحد قدامى المحاربين عن كوابيس وذكريات ماضية وتجنب الضوضاء العالية. التشخيص؟",
+      "options": ["الفصام", "اضطراب ما بعد الصدمة (PTSD)", "اضطراب التكيف", "نوبة هلع"],
+      "explain": "يتضمن اضطراب ما بعد الصدمة (PTSD) إعادة تجربة حدث صادم."
+    },
+    "answer": 1
+  },
+  {
+    "en": {
+      "q": "A patient believes that 'spiders are crawling on his skin' but nothing is there. This is:",
+      "options": ["Illusion", "Tactile Hallucination", "Visual Hallucination", "Delusion"],
+      "explain": "Tactile hallucinations (Formication) are common in alcohol withdrawal or cocaine use."
+    },
+    "ar": {
+      "q": "يعتقد المريض أن 'العناكب تزحف على جلده' ولكن لا يوجد شيء هناك. هذا هو:",
+      "options": ["خداع بصري", "هلوسة لمسية", "هلوسة بصرية", "ضلالة"],
+      "explain": "الهلوسة اللمسية شائعة في حالات انسحاب الكحول أو استخدام الكوكايين."
+    },
+    "answer": 1
+  },
+  {
+    "en": {
+      "q": "A patient is prescribed Lithium. Which organ function must be checked regularly?",
+      "options": ["Liver", "Thyroid and Kidneys", "Lungs", "Spleen"],
+      "explain": "Lithium is excreted by kidneys and can cause hypothyroidism."
+    },
+    "ar": {
+      "q": "تم وصف الليثيوم لمريض. أي وظيفة عضو يجب فحصها بانتظام؟",
+      "options": ["الكبد", "الغدة الدرقية والكلى", "الرئتين", "الطحال"],
+      "explain": "يتم إخراج الليثيوم عن طريق الكلى ويمكن أن يسبب قصور الغدة الدرقية."
+    },
+    "answer": 1
+  },
+  {
+    "en": {
+      "q": "An 80-year-old has chronic, progressive memory loss and confusion. Most likely diagnosis?",
+      "options": ["Delirium", "Alzheimer's Disease", "Schizophrenia", "Depression"],
+      "explain": "Alzheimer's is the most common cause of progressive dementia in the elderly."
+    },
+    "ar": {
+      "q": "شخص يبلغ من العمر 80 عامًا يعاني من فقدان ذاكرة مزمن وارتباك تدريجي. التشخيص الأرجح؟",
+      "options": ["الهذيان", "مرض الزهايمر", "الفصام", "الاكتئاب"],
+      "explain": "الزهايمر هو السبب الأكثر شيوعًا للخرف التدريجي لدى كبار السن."
+    },
+    "answer": 1
+  },
+  {
+    "en": {
+      "q": "A patient on SSRIs for depression suddenly stops meds and feels flu-like symptoms. This is:",
+      "options": ["Serotonin Syndrome", "Discontinuation Syndrome", "Relapse", "Toxicity"],
+      "explain": "Stopping SSRIs abruptly can cause 'FINISH' symptoms (Flu-like, Insomnia, Nausea, etc.)."
+    },
+    "ar": {
+      "q": "مريض يتناول SSRIs للاكتئاب يتوقف فجأة عن الدواء ويشعر بأعراض تشبه الأنفلونزا. هذا هو:",
+      "options": ["متلازمة السيروتونين", "متلازمة الانقطاع", "انتكاسة", "تسمم"],
+      "explain": "التوقف عن تناول SSRIs فجأة يمكن أن يسبب أعراض 'FINISH' (أعراض تشبه الأنفلونزا، أرق، غثيان، إلخ)."
+    },
+    "answer": 1
+  },
+  {
+    "en": {
+      "q": "Which of these is a 'Negative Symptom' of Schizophrenia?",
+      "options": ["Hallucinations", "Alogia (Poverty of speech)", "Disorganized behavior", "Delusions"],
+      "explain": "Negative symptoms include Alogia, Anhedonia, Avolition, and Affective flattening."
+    },
+    "ar": {
+      "q": "أي مما يلي يعد 'عرضاً سلبياً' للفصام؟",
+      "options": ["الهلوسة", "فقر الكلام (Alogia)", "سلوك غير منظم", "الضلالات"],
+      "explain": "تشمل الأعراض السلبية فقر الكلام، انعدام التلذذ، انعدام الإرادة، وتسطح العاطفة."
+    },
+    "answer": 1
+  },
+  {
+    "en": {
+      "q": "A patient has a long history of unstable relationships, fear of abandonment, and self-harm. Likely diagnosis?",
+      "options": ["Narcissistic PD", "Borderline Personality Disorder", "Antisocial PD", "Avoidant PD"],
+      "explain": "Borderline PD involves instability of mood, relationships, and self-image."
+    },
+    "ar": {
+      "q": "مريض لديه تاريخ طويل من العلاقات غير المستقرة، والخوف من الهجر، وإيذاء النفس. التشخيص المحتمل؟",
+      "options": ["اضطراب الشخصية النرجسية", "اضطراب الشخصية الحدية", "اضطراب الشخصية المعادية للمجتمع", "اضطراب الشخصية التجنبية"],
+      "explain": "يتضمن اضطراب الشخصية الحدية عدم استقرار المزاج والعلاقات وصورة الذات."
+    },
+    "answer": 1
+  },
+  {
+    "en": {
+      "q": "What is the most common side effect of SSRIs like Sertraline?",
+      "options": ["Weight loss", "Sexual dysfunction", "Hair loss", "High blood pressure"],
+      "explain": "Sexual dysfunction is a very common long-term side effect of SSRI therapy."
+    },
+    "ar": {
+      "q": "ما هو العرض الجانبي الأكثر شيوعًا لـ SSRIs مثل سيرترالين؟",
+      "options": ["فقدان الوزن", "الخلل الوظيفي الجنسي", "تساقط الشعر", "ارتفاع ضغط الدم"],
+      "explain": "يعد الخلل الوظيفي الجنسي عرضاً جانبياً شائعاً جداً على المدى الطويل لعلاج SSRI."
+    },
+    "answer": 1
+  }
+]
