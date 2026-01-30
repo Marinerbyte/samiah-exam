@@ -2,301 +2,271 @@
 <html lang="en" id="html-tag">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Samiah's Psych Mastery 🌸</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Dr. Samiah's Psych Quiz 🩺</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=Cairo:wght@600;800&family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&family=Cairo:wght@600;700&family=Pacifico&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 
     <style>
         body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background: #0f172a; /* Deep elegant dark background */
-            overflow-x: hidden;
-            min-height: 100vh;
+            font-family: 'Quicksand', sans-serif;
+            background: #fdf2f8; /* Soft pinkish medicine theme */
+            height: 100vh;
+            overflow: hidden;
+            touch-action: manipulation;
         }
         :lang(ar) { font-family: 'Cairo', sans-serif; }
 
-        /* Floating Flowers Background */
-        .flower-bg {
+        .samiah-pop {
             position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            pointer-events: none;
-            z-index: 0;
-            opacity: 0.3;
-        }
-
-        .samiah-name {
-            font-family: 'Pacifico', cursive;
-            color: #f472b6;
-            text-shadow: 0 0 20px rgba(244, 114, 182, 0.5);
-            animation: floating 3s ease-in-out infinite;
-        }
-
-        @keyframes floating {
-            0%, 100% { transform: translateY(0px) rotate(-2deg); }
-            50% { transform: translateY(-10px) rotate(2deg); }
-        }
-
-        .glass-container {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(25px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8);
-        }
-
-        .option-btn {
-            background: rgba(255, 255, 255, 0.1);
-            border: 2px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            color: white;
-        }
-
-        .option-btn:hover {
-            background: rgba(99, 102, 241, 0.2);
-            border-color: #6366f1;
-            transform: scale(1.02);
-        }
-
-        .option-btn.selected {
-            background: #6366f1;
-            border-color: #818cf8;
-            box-shadow: 0 0 20px rgba(99, 102, 241, 0.4);
-        }
-
-        .celebration-text {
-            position: fixed;
-            top: 50%;
-            left: 50%;
+            top: 40%; left: 50%;
             transform: translate(-50%, -50%);
             font-family: 'Pacifico', cursive;
-            font-size: 4rem;
-            color: #fbbf24;
+            font-size: 3.5rem;
+            color: #db2777;
+            text-shadow: 2px 2px 10px rgba(219, 39, 119, 0.3);
             z-index: 100;
-            pointer-events: none;
             display: none;
+            pointer-events: none;
         }
 
-        /* Language Toggle */
-        .lang-switch {
-            background: rgba(0,0,0,0.5);
-            padding: 5px;
-            border-radius: 50px;
+        .option-card {
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 2px solid #fce7f3;
         }
-        .lang-btn {
-            padding: 5px 15px;
-            border-radius: 50px;
-            transition: 0.3s;
-            color: white;
-            font-weight: bold;
-            font-size: 12px;
+        .option-card:active { transform: scale(0.95); }
+        
+        /* Correct/Wrong Colors */
+        .card-correct { background: #dcfce7 !important; border-color: #22c55e !important; }
+        .card-wrong { background: #fee2e2 !important; border-color: #ef4444 !important; }
+
+        .medical-float {
+            position: absolute;
+            opacity: 0.1;
+            z-index: 0;
+            animation: float 6s infinite ease-in-out;
         }
-        .lang-btn.active { background: #6366f1; }
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0); }
+            50% { transform: translateY(-20px) rotate(10deg); }
+        }
     </style>
 </head>
-<body class="flex items-center justify-center p-4">
+<body class="flex items-center justify-center relative">
 
-    <!-- Flower particles background -->
-    <div class="flower-bg" id="bg-particles"></div>
-    <div id="samiah-pop" class="celebration-text animate__animated">Go Samiah! 🌸</div>
+    <!-- Samiah Blast Text -->
+    <div id="samiah-pop" class="samiah-pop animate__animated">Samiah! 🌸</div>
 
-    <div class="w-full max-w-xl z-10">
+    <!-- Floating Icons -->
+    <div class="medical-float text-6xl top-10 left-10">💊</div>
+    <div class="medical-float text-6xl bottom-20 right-10" style="animation-delay: 2s;">🩺</div>
+    <div class="medical-float text-6xl top-1/2 left-5" style="animation-delay: 1s;">🧠</div>
+
+    <div class="w-full max-w-md h-screen flex flex-col p-4 z-10">
         
-        <!-- Header -->
-        <div class="flex justify-between items-center mb-6">
-            <div class="lang-switch flex">
-                <button onclick="setLang('en')" id="btn-en" class="lang-btn active">English</button>
-                <button onclick="setLang('ar')" id="btn-ar" class="lang-btn">العربية</button>
+        <!-- Header: Reset & Lang -->
+        <div class="flex justify-between items-center mb-2">
+            <button onclick="resetQuiz()" class="bg-white px-3 py-1 rounded-full shadow-sm text-xs font-bold text-gray-500 hover:bg-gray-100 flex items-center gap-1">
+                🔄 Reset
+            </button>
+            <div class="bg-white/80 backdrop-blur p-1 rounded-full shadow-sm flex gap-1 border">
+                <button onclick="setLang('en')" id="btn-en" class="px-3 py-1 rounded-full text-xs font-bold transition-all">EN</button>
+                <button onclick="setLang('ar')" id="btn-ar" class="px-3 py-1 rounded-full text-xs font-bold transition-all">AR</button>
             </div>
-            <div class="samiah-name text-2xl">Samiah</div>
         </div>
 
-        <!-- Progress Bar -->
-        <div class="w-full bg-gray-800 h-2 rounded-full mb-12 overflow-hidden">
-            <div id="progress-fill" class="h-full bg-gradient-to-r from-indigo-500 to-pink-500 transition-all duration-700" style="width: 0%"></div>
+        <!-- Progress Area -->
+        <div class="bg-white rounded-3xl p-4 shadow-sm border border-pink-100 mb-4">
+            <div class="flex justify-between items-center mb-2">
+                <span class="text-pink-600 font-bold text-sm tracking-tighter" id="q-status">Question 1/15</span>
+                <span class="bg-pink-100 text-pink-700 px-3 py-1 rounded-full text-[10px] font-black uppercase">Psychiatry 🧠</span>
+            </div>
+            <div class="w-full bg-pink-50 h-2.5 rounded-full overflow-hidden">
+                <div id="progress-bar" class="h-full bg-gradient-to-r from-pink-400 to-indigo-400 transition-all duration-500" style="width: 0%"></div>
+            </div>
         </div>
 
-        <!-- Main Quiz Card -->
-        <div class="glass-container rounded-[3rem] p-8 md:p-12 relative">
-            
-            <!-- Panda Mascot (Large & Centered) -->
-            <div class="absolute -top-32 left-1/2 -translate-x-1/2 w-48 h-48 drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]">
-                <lottie-player id="panda-mascot" 
-                    src="https://assets1.lottiefiles.com/packages/lf20_9n6mre.json" 
-                    background="transparent" speed="1" loop autoplay>
-                </lottie-player>
+        <!-- Mascot Area -->
+        <div class="flex-grow flex flex-col items-center justify-center relative min-h-[150px]">
+            <div class="w-40 h-40 relative">
+                <lottie-player id="panda" src="https://assets1.lottiefiles.com/packages/lf20_9n6mre.json" background="transparent" speed="1" loop autoplay></lottie-player>
+            </div>
+            <div class="text-xs font-bold text-gray-400 mt-2 italic" id="feedback-txt">Dr. Panda is waiting... 🐼</div>
+        </div>
+
+        <!-- Question Box -->
+        <div id="quiz-ui" class="flex flex-col gap-3 mb-4">
+            <div class="bg-white rounded-[2rem] p-5 shadow-sm border-b-4 border-pink-200">
+                <h2 id="question-text" class="text-lg font-bold text-gray-800 text-center leading-tight"></h2>
             </div>
 
-            <div id="quiz-screen" class="pt-16">
-                <h3 id="step-label" class="text-indigo-400 text-center font-bold text-sm tracking-widest uppercase mb-4">Step 1 of 15</h3>
-                <h2 id="question-text" class="text-2xl md:text-3xl font-extrabold text-white text-center mb-10 leading-tight"></h2>
-
-                <div id="options-container" class="grid grid-cols-1 gap-4">
-                    <!-- Options -->
-                </div>
-
-                <button id="main-btn" onclick="handleBtnClick()" disabled
-                    class="w-full mt-10 bg-indigo-600 text-white font-black py-5 rounded-3xl text-xl shadow-[0_0_30px_rgba(79,70,229,0.4)] hover:bg-indigo-500 transition-all active:scale-95 disabled:opacity-30 disabled:pointer-events-none">
-                    <span id="btn-label">Check Answer</span>
-                </button>
+            <!-- Options (Compact) -->
+            <div id="options-grid" class="grid grid-cols-1 gap-2">
+                <!-- Shuffled Options Injected Here -->
             </div>
+        </div>
 
-            <!-- Result Screen -->
-            <div id="result-screen" class="hidden pt-10 text-center">
-                <h1 class="text-5xl font-black text-white mb-4">Exam Ready!</h1>
-                <p class="text-indigo-200 text-lg mb-8">Samiah, you are a Psychiatry Star! 🌟</p>
-                <div class="bg-indigo-900/40 rounded-[2rem] p-8 mb-8 border border-indigo-500/30">
-                    <div class="text-6xl font-black text-pink-400" id="final-score">0/0</div>
-                    <div class="text-indigo-300 font-bold uppercase mt-2">Perfect Score</div>
-                </div>
-                <button onclick="location.reload()" class="w-full py-5 bg-white text-indigo-900 font-black rounded-3xl text-xl shadow-xl">Try Again 🔄</button>
-            </div>
+        <!-- Result Screen (Hidden) -->
+        <div id="result-ui" class="hidden flex-grow flex flex-col items-center justify-center text-center p-6 bg-white rounded-[3rem] shadow-xl border-4 border-pink-100 mb-10 animate__animated animate__zoomIn">
+            <div class="text-5xl mb-4">🏆</div>
+            <h1 class="text-3xl font-black text-gray-800 mb-2" id="res-title">Amazing!</h1>
+            <p class="text-gray-500 text-sm mb-6 leading-relaxed" id="res-msg">Samiah, you've conquered the Psychiatry exam!</p>
+            <div class="text-6xl font-black text-pink-500 mb-8" id="final-score">15/15</div>
+            <button onclick="resetQuiz()" class="w-full bg-indigo-600 text-white font-bold py-4 rounded-2xl shadow-lg">Start New Drill 🩺</button>
+        </div>
+
+        <!-- Footer Score -->
+        <div class="text-center pb-2">
+            <span class="text-[10px] font-black uppercase text-gray-400 tracking-widest">Score: <span id="current-score" class="text-pink-500">0</span></span>
         </div>
     </div>
 
     <script>
-        const questions = {{ questions | tojson }};
+        const rawQuestions = {{ questions | tojson }};
         let currentIdx = 0;
         let score = 0;
-        let selectedIdx = null;
-        let isFeedback = false;
         let lang = 'en';
+        let isLocked = false;
+        let shuffledOptions = [];
 
         const i18n = {
-            en: { check: "Check Answer", next: "Continue", step: "Question", pop: "Go Samiah! 🌸" },
-            ar: { check: "تحقق من الإجابة", next: "السؤال التالي", step: "سؤال", pop: "أحسنتِ يا سامية! 🌸" }
+            en: { status: "Question", wait: "Dr. Panda is waiting... 🐼", correct: "Bravo, Samiah! 🌸", wrong: "Try the next one! ✨", resT: "Success!", resM: "Samiah, you are ready for Monday!", samiah: "Samiah! 🌸" },
+            ar: { status: "سؤال", wait: "دكتور باندا في انتظارك... 🐼", correct: "أحسنتِ يا سامية! 🌸", wrong: "حاولي في السؤال التالي! ✨", resT: "رائع!", resM: "سامية، أنتِ مستعدة ليوم الاثنين!", samiah: "سامية! 🌸" }
         };
 
         function setLang(l) {
             lang = l;
+            document.getElementById('html-tag').lang = lang;
             document.body.dir = lang === 'ar' ? 'rtl' : 'ltr';
-            document.getElementById('btn-en').className = `lang-btn ${lang==='en'?'active':''}`;
-            document.getElementById('btn-ar').className = `lang-btn ${lang==='ar'?'active':''}`;
-            renderQuestion();
+            updateLangButtons();
+            loadQuestion();
         }
 
-        function renderQuestion() {
-            const q = questions[currentIdx][lang];
-            const panda = document.getElementById('panda-mascot');
-            
-            isFeedback = false;
-            selectedIdx = null;
-            document.getElementById('main-btn').disabled = true;
-            document.getElementById('btn-label').innerText = i18n[lang].check;
-            document.getElementById('question-text').innerText = q.q;
-            document.getElementById('step-label').innerText = `${i18n[lang].step} ${currentIdx + 1} / ${questions.length}`;
-            document.getElementById('progress-fill').style.width = `${(currentIdx / questions.length) * 100}%`;
+        function updateLangButtons() {
+            document.getElementById('btn-en').className = lang === 'en' ? 'bg-indigo-600 text-white px-3 py-1 rounded-full' : 'text-gray-400 px-3 py-1';
+            document.getElementById('btn-ar').className = lang === 'ar' ? 'bg-indigo-600 text-white px-3 py-1 rounded-full' : 'text-gray-400 px-3 py-1';
+        }
 
-            const container = document.getElementById('options-container');
-            container.innerHTML = '';
+        function loadQuestion() {
+            if (currentIdx >= rawQuestions.length) {
+                showResults();
+                return;
+            }
+
+            isLocked = false;
+            const qData = rawQuestions[currentIdx];
+            const currentQ = qData[lang];
             
-            q.options.forEach((opt, i) => {
+            // Panda to Normal
+            document.getElementById('panda').load("https://assets1.lottiefiles.com/packages/lf20_9n6mre.json");
+            document.getElementById('feedback-txt').innerText = i18n[lang].wait;
+            document.getElementById('feedback-txt').className = "text-xs font-bold text-gray-400 mt-2 italic";
+
+            // Update Header
+            document.getElementById('q-status').innerText = `${i18n[lang].status} ${currentIdx + 1}/${rawQuestions.length}`;
+            document.getElementById('progress-bar').style.width = `${((currentIdx) / rawQuestions.length) * 100}%`;
+            document.getElementById('current-score').innerText = score;
+
+            // Update Text
+            document.getElementById('question-text').innerText = currentQ.q;
+
+            // Shuffle Logic: Always shuffle options
+            const originalOptions = [...currentQ.options];
+            const correctText = currentQ.options[qData.answer];
+            
+            // Fisher-Yates Shuffle
+            shuffledOptions = originalOptions.sort(() => Math.random() - 0.5);
+            const newCorrectIdx = shuffledOptions.indexOf(correctText);
+            
+            // Render Options
+            const container = document.getElementById('options-grid');
+            container.innerHTML = '';
+            shuffledOptions.forEach((opt, idx) => {
                 const btn = document.createElement('button');
-                btn.className = "option-btn p-5 rounded-[1.5rem] text-left flex items-center gap-4 font-bold text-lg";
-                if(lang === 'ar') btn.classList.add('text-right');
-                btn.innerHTML = `<span class="opacity-40">${i+1}.</span> <span class="flex-1">${opt}</span>`;
-                btn.onclick = () => selectOption(i, btn);
+                btn.className = "option-card bg-white p-3 rounded-2xl text-sm font-bold text-gray-700 shadow-sm flex items-center gap-3";
+                btn.innerHTML = `<span class="bg-pink-50 w-6 h-6 rounded-full flex items-center justify-center text-[10px] text-pink-400">${idx+1}</span> <span class="flex-1">${opt}</span>`;
+                btn.onclick = () => checkAnswer(idx, newCorrectIdx, btn);
                 container.appendChild(btn);
             });
         }
 
-        function selectOption(i, el) {
-            if(isFeedback) return;
-            selectedIdx = i;
-            document.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
-            el.classList.add('selected');
-            document.getElementById('main-btn').disabled = false;
-        }
+        function checkAnswer(selected, correct, element) {
+            if (isLocked) return;
+            isLocked = true;
 
-        function handleBtnClick() {
-            if(!isFeedback) checkAnswer();
-            else nextQuestion();
-        }
+            const panda = document.getElementById('panda');
+            const feedback = document.getElementById('feedback-txt');
 
-        function checkAnswer() {
-            isFeedback = true;
-            const correct = questions[currentIdx].answer;
-            const panda = document.getElementById('panda-mascot');
-            const btns = document.querySelectorAll('.option-btn');
-
-            if(selectedIdx === correct) {
+            if (selected === correct) {
                 score++;
-                btns[selectedIdx].classList.add('!bg-green-500', '!border-green-300');
-                // HAPPY DANCING PANDA
-                panda.load("https://assets1.lottiefiles.com/packages/lf20_6r9v9y.json");
+                element.classList.add('card-correct');
+                feedback.innerText = i18n[lang].correct;
+                feedback.className = "text-xs font-bold text-green-500 mt-2 animate__animated animate__heartBeat";
                 
-                // FLOWER BLAST EFFECT
-                triggerFlowerBlast();
-                showSamiahPop();
+                // Blast Effects
+                panda.load("https://assets1.lottiefiles.com/packages/lf20_6r9v9y.json"); // Dance
+                triggerCelebration();
             } else {
-                btns[selectedIdx].classList.add('!bg-red-500', '!border-red-300');
-                btns[correct].classList.add('!bg-green-500', '!opacity-100');
-                // SAD/THINKING PANDA
-                panda.load("https://assets10.lottiefiles.com/packages/lf20_qpwb7mpx.json");
+                element.classList.add('card-wrong');
+                document.querySelectorAll('.option-card')[correct].classList.add('card-correct');
+                feedback.innerText = i18n[lang].wrong;
+                feedback.className = "text-xs font-bold text-red-400 mt-2";
+                panda.load("https://assets10.lottiefiles.com/packages/lf20_qpwb7mpx.json"); // Sad
             }
 
-            Swal.fire({
-                title: selectedIdx === correct ? 'Success!' : 'Explanation',
-                text: questions[currentIdx][lang].explain,
-                icon: selectedIdx === correct ? 'success' : 'info',
-                confirmButtonColor: '#6366f1',
-                customClass: { popup: 'rounded-[2rem]' }
+            // Auto-Next after 2 seconds
+            setTimeout(() => {
+                currentIdx++;
+                loadQuestion();
+            }, 2000);
+        }
+
+        function triggerCelebration() {
+            // Flower Confetti
+            confetti({
+                particleCount: 100,
+                spread: 70,
+                origin: { y: 0.6 },
+                colors: ['#db2777', '#f472b6', '#ffffff']
             });
 
-            document.getElementById('btn-label').innerText = i18n[lang].next;
-        }
-
-        function triggerFlowerBlast() {
-            var count = 200;
-            var defaults = { origin: { y: 0.7 } };
-
-            function fire(particleRatio, opts) {
-                confetti(Object.assign({}, defaults, opts, {
-                    particleCount: Math.floor(count * particleRatio)
-                }));
-            }
-
-            fire(0.25, { spread: 26, startVelocity: 55, });
-            fire(0.2, { spread: 60, });
-            fire(0.35, { spread: 100, decay: 0.91, scalar: 0.8 });
-            fire(0.1, { spread: 120, startVelocity: 25, decay: 0.92, scalar: 1.2 });
-            fire(0.1, { spread: 120, startVelocity: 45, });
-        }
-
-        function showSamiahPop() {
+            // Samiah Name Pop
             const pop = document.getElementById('samiah-pop');
-            pop.innerText = i18n[lang].pop;
+            pop.innerText = i18n[lang].samiah;
             pop.style.display = 'block';
-            pop.className = 'celebration-text animate__animated animate__zoomInDown';
+            pop.className = 'samiah-pop animate__animated animate__zoomInDown';
             setTimeout(() => {
-                pop.className = 'celebration-text animate__animated animate__fadeOutUp';
+                pop.className = 'samiah-pop animate__animated animate__fadeOutUp';
                 setTimeout(() => { pop.style.display = 'none'; }, 1000);
-            }, 1500);
+            }, 1200);
         }
 
-        function nextQuestion() {
-            currentIdx++;
-            if(currentIdx < questions.length) {
-                document.getElementById('panda-mascot').load("https://assets1.lottiefiles.com/packages/lf20_9n6mre.json");
-                renderQuestion();
-            } else {
-                showFinal();
-            }
+        function showResults() {
+            document.getElementById('quiz-ui').classList.add('hidden');
+            document.getElementById('result-ui').classList.remove('hidden');
+            document.getElementById('final-score').innerText = `${score}/${rawQuestions.length}`;
+            document.getElementById('progress-bar').style.width = '100%';
+            document.getElementById('res-title').innerText = i18n[lang].resT;
+            document.getElementById('res-msg').innerText = i18n[lang].resM;
+            document.getElementById('panda').load("https://assets1.lottiefiles.com/packages/lf20_7zt8sh.json");
+            confetti({ particleCount: 300, spread: 100 });
         }
 
-        function showFinal() {
-            document.getElementById('quiz-screen').classList.add('hidden');
-            document.getElementById('result-screen').classList.remove('hidden');
-            document.getElementById('final-score').innerText = `${score}/${questions.length}`;
-            document.getElementById('panda-mascot').load("https://assets1.lottiefiles.com/packages/lf20_7zt8sh.json");
-            confetti({ particleCount: 500, spread: 150 });
+        function resetQuiz() {
+            currentIdx = 0;
+            score = 0;
+            document.getElementById('quiz-ui').classList.remove('hidden');
+            document.getElementById('result-ui').classList.add('hidden');
+            loadQuestion();
         }
 
-        renderQuestion();
+        // Init
+        updateLangButtons();
+        loadQuestion();
     </script>
 </body>
-    </html>
+</html>
